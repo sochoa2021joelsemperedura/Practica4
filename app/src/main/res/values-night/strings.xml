@@ -3,4 +3,21 @@
     <string name="stAcercaDe">Acerca De</string>
     <string name="stOrdenar">Ordenar</string>
     <string name="stDialogo"><![CDATA[ Práctica 4\nV 1.0\nJoel Sempere Durá\nLicencia cc\n(Creative Commons)]]></string>
+    <string-array name="prioridad">
+        <item>Baja</item>
+        <item>Media</item>
+        <item>Alta</item>
+    </string-array>
+    <string-array name="categoria">
+        <item>Reparación</item>
+        <item>Instalación</item>
+        <item>Mantenimiento</item>
+        <item>Comercial</item>
+        <item>Otros</item>
+    </string-array>
+    <string-array name="estado">
+        <item>Abierta</item>
+        <item>En curso</item>
+        <item>Terminada</item>
+    </string-array>
 </resources>

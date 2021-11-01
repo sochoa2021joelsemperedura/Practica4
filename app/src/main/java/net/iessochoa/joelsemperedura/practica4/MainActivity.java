@@ -22,17 +22,16 @@ public class MainActivity extends AppCompatActivity {
                 getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
-    //Opciones de los items del menu. TODO las acciones reales, actualmente solo muestran un "print"
+    //Opciones de los items del menu.
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_add:
-                Toast.makeText(this, R.string.stAnyadir,Toast.LENGTH_SHORT).show();
-                return true;
-            case R.id.action_del:
-                Toast.makeText(this, R.string.stBorrar,Toast.LENGTH_SHORT).show();
+            case R.id.action_ordenar:
+                //El ejercicio pide un toast (TODO hacer la funcion más adelante)
+                Toast.makeText(this, R.string.stOrdenar,Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.action_acercade:
+                //TODO cuadro de dialogo
                 Toast.makeText(this, R.string.stAcercaDe,Toast.LENGTH_SHORT).show();
 
                 return true;

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="stBorrar">Borrar</string>
     <string name="stAcercaDe">Acerca De</string>
-    <string name="stAnyadir">Añadir</string>
+    <string name="stOrdenar">Ordenar</string>
 </resources>

@@ -2,4 +2,5 @@
 <resources>
     <string name="stAcercaDe">Acerca De</string>
     <string name="stOrdenar">Ordenar</string>
+    <string name="stDialogo"><![CDATA[ Práctica 4\nV 1.0\nJoel Sempere Durá\nLicencia cc\n(Creative Commons)]]></string>
 </resources>

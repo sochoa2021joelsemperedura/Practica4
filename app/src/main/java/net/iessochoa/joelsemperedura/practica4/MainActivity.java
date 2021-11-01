@@ -1,6 +1,7 @@
 package net.iessochoa.joelsemperedura.practica4;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 
 import android.os.Bundle;
 import android.view.Menu;
@@ -22,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
                 getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
-    //Opciones de los items del menu.
+    //*************************Opciones de los items del menu****************************//
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -31,12 +32,15 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this, R.string.stOrdenar,Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.action_acercade:
-                //TODO cuadro de dialogo
-                Toast.makeText(this, R.string.stAcercaDe,Toast.LENGTH_SHORT).show();
+                //Inicializa el objeto que nos devuelve el dialogo
+                FragmentManager fg = getSupportFragmentManager();
+                DialogoAlerta dialogo = new DialogoAlerta();
+                dialogo.show(fg,"tagAcercaDe");
 
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
+
 }

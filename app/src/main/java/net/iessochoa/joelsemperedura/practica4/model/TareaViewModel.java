@@ -30,6 +30,8 @@ public class TareaViewModel extends AndroidViewModel {
         listaTareasLiveData = new MutableLiveData<List<Tarea>>();
         //Datos de ejemplo
         crearDatos();
+        //Avisamos de la modificacion con el liveData
+        listaTareasLiveData.setValue(listaTareas);
     }
 
     /*

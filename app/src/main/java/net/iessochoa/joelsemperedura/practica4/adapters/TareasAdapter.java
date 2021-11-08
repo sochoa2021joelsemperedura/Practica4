@@ -54,19 +54,19 @@ public class TareasAdapter extends RecyclerView.Adapter<TareasAdapter.TareaViewH
             // Icono segun actividad
             switch (tarea.getCategoria()){
                 case "Reparación" :
-                   // holder.ivEstado.setImageResource();
+                   holder.ivEstado.setImageResource(R.drawable.ic_repara);
                     break;
                 case "Instalación" :
-                    //haz cositas
+                    holder.ivEstado.setImageResource(R.drawable.ic_instala);
                     break;
                 case "Mantenimiento" :
-                    //haz cositas
+                    holder.ivEstado.setImageResource(R.drawable.ic_mantiene);
                     break;
                 case "Comercial" :
-                    //haz cositas
+                    holder.ivEstado.setImageResource(R.drawable.ic_comercia);
                     break;
                 case "Otros" :
-                    //haz cositas
+                    holder.ivEstado.setImageResource(R.drawable.ic_otros);
                     break;
 
             }

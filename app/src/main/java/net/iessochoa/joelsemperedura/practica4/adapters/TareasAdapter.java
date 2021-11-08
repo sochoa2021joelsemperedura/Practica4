@@ -19,7 +19,6 @@ public class TareasAdapter extends RecyclerView.Adapter<TareasAdapter.TareaViewH
     //Lista con las tareas a mostrar
     private List<Tarea> listaTareas;
 
-
     @NonNull
     @Override
     //Metodo que es llamado cuando se necesite un nuevo ViewHolder

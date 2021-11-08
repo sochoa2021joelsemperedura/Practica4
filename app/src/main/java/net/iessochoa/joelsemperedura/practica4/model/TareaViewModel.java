@@ -7,6 +7,8 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import net.iessochoa.joelsemperedura.practica4.enums.Categoria;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -72,7 +74,7 @@ public class TareaViewModel extends AndroidViewModel {
     private void crearDatos(){
         listaTareas = new ArrayList<Tarea>();
         //1
-        Tarea tarea = new Tarea("Alta","Mantenimiento","Abierta","Joel Sempere","Actualización de antivirus","\"Lorem ipsum dolor sit amet,\n" +
+        Tarea tarea = new Tarea("Alta", Categoria.MANTENIMIENTO,"Abierta","Joel Sempere","Actualización de antivirus","\"Lorem ipsum dolor sit amet,\n" +
                 "consectetur adipiscing elit. Mauris laoreet aliquam sapien, quis mattis\n" +
                 "diam pretium vel. Integer nec tincidunt turpis. Vestibulum interdum\n" +
                 "accumsan massa, sed blandit ex fringilla at. Vivamus non sem vitae nisl\n" +
@@ -81,7 +83,7 @@ public class TareaViewModel extends AndroidViewModel {
                 "eget consequat ante lacinia et. Phasellus ut diam et diam euismod convallis");
         listaTareas.add(tarea);
         //2
-        tarea=new Tarea("Baja","Reparación","En curso","Viviana Castillo","Sustitución de ratones","Lorem ipsum dolor sit amet, consectetur\n" +
+        tarea=new Tarea("Baja",Categoria.REPARACION,"En curso","Viviana Castillo","Sustitución de ratones","Lorem ipsum dolor sit amet, consectetur\n" +
                 "adipiscing elit. Mauris laoreet aliquam sapien, quis mattis diam pretium\n" +
                 "vel. Integer nec tincidunt turpis. Vestibulum interdum accumsan massa, sed\n" +
                 "blandit ex fringilla at. Vivamus non sem vitae nisl viverra pharetra.\n" +
@@ -90,7 +92,7 @@ public class TareaViewModel extends AndroidViewModel {
                 "ante lacinia et. Phasellus ut diam et diam euismod convallis");
         listaTareas.add(tarea);
         //3
-        tarea=new Tarea("Media","Mantenimiento","Terminada","Gabriella Sempere","Actualización de S.O. Linux","Lorem ipsum dolor sit amet, consectetur\n" +
+        tarea=new Tarea("Media",Categoria.MANTENIMIENTO,"Terminada","Gabriella Sempere","Actualización de S.O. Linux","Lorem ipsum dolor sit amet, consectetur\n" +
                 "adipiscing elit. Mauris laoreet aliquam sapien, quis mattis diam pretium\n" +
                 "vel. Integer nec tincidunt turpis. Vestibulum interdum accumsan massa, sed\n" +
                 "blandit ex fringilla at. Vivamus non sem vitae nisl viverra pharetra.\n" +
@@ -99,7 +101,7 @@ public class TareaViewModel extends AndroidViewModel {
                 "ante lacinia et. Phasellus ut diam et diam euismod convallis");
         listaTareas.add(tarea);
         //4
-        tarea=new Tarea("Media","Comercial","Abierta","Lidia Sanchez","Presentar Presupuesto Web","Lorem ipsum dolor sit amet, consectetur\n" +
+        tarea=new Tarea("Media",Categoria.COMERCIAL,"Abierta","Lidia Sanchez","Presentar Presupuesto Web","Lorem ipsum dolor sit amet, consectetur\n" +
                 "adipiscing elit. Mauris laoreet aliquam sapien, quis mattis diam pretium\n" +
                 "vel. Integer nec tincidunt turpis. Vestibulum interdum accumsan massa, sed\n" +
                 "blandit ex fringilla at. Vivamus non sem vitae nisl viverra pharetra.\n" +
@@ -108,7 +110,7 @@ public class TareaViewModel extends AndroidViewModel {
                 "ante lacinia et. Phasellus ut diam et diam euismod convallis");
         listaTareas.add(tarea);
         //5
-        tarea=new Tarea("Alta","Comercial","En curso","Pepe Botella","Compra de Criptomonedas","Lorem ipsum dolor sit amet, consectetur\n" +
+        tarea=new Tarea("Alta",Categoria.COMERCIAL,"En curso","Pepe Botella","Compra de Criptomonedas","Lorem ipsum dolor sit amet, consectetur\n" +
                 "adipiscing elit. Mauris laoreet aliquam sapien, quis mattis diam pretium\n" +
                 "vel. Integer nec tincidunt turpis. Vestibulum interdum accumsan massa, sed\n" +
                 "blandit ex fringilla at. Vivamus non sem vitae nisl viverra pharetra.\n" +

@@ -1,0 +1,7 @@
+<resources>
+    <string name="reparacion">Reparación</string>
+    <string name="instalacion">Instalación</string>
+    <string name="mantenimiento">Mantenimiento</string>
+    <string name="comercial">Comercial</string>
+    <string name="otros">Otros</string>
+</resources>

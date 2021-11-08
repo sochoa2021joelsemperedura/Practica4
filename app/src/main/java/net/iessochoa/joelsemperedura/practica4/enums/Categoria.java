@@ -10,6 +10,7 @@ public enum Categoria {
     MANTENIMIENTO(R.drawable.ic_mantiene),
     COMERCIAL(R.drawable.ic_comercia),
     OTROS(R.drawable.ic_otros);
+
 private int ivMostrar;
 
     public int getIvMostrar() {

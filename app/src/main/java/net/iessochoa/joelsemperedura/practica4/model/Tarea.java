@@ -3,6 +3,8 @@ package net.iessochoa.joelsemperedura.practica4.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import net.iessochoa.joelsemperedura.practica4.enums.Categoria;
+
 import java.util.Objects;
 
 /*
@@ -13,14 +15,14 @@ public class Tarea implements Parcelable {
     static int contador=1;
     private int id;
     private String prioridad;
-    private String categoria;
+    private Categoria categoria;
     private String estado;
     private String tecnico;
     private String descripcion;
     private String resumen;
 
     //***********************CONSTRUCTORES******************************//
-    public Tarea(int id, String prioridad, String categoria, String estado, String tecnico, String descripcion, String resumen) {
+    public Tarea(int id, String prioridad, Categoria categoria, String estado, String tecnico, String descripcion, String resumen) {
         this.id = id;
         this.prioridad = prioridad;
         this.categoria = categoria;
@@ -30,7 +32,7 @@ public class Tarea implements Parcelable {
         this.resumen = resumen;
     }
 
-    public Tarea(String prioridad, String categoria, String estado, String tecnico, String descripcion, String resumen) {
+    public Tarea(String prioridad, Categoria categoria, String estado, String tecnico, String descripcion, String resumen) {
         this.id=contador++;
         this.prioridad = prioridad;
         this.categoria = categoria;
@@ -59,10 +61,10 @@ public class Tarea implements Parcelable {
     public void setPrioridad(String prioridad) {
         this.prioridad = prioridad;
     }
-    public String getCategoria() {
+    public Categoria getCategoria() {
         return categoria;
     }
-    public void setCategoria(String categoria) {
+    public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
     public String getEstado() {
@@ -115,7 +117,7 @@ public class Tarea implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(this.id);
         dest.writeString(this.prioridad);
-        dest.writeString(this.categoria);
+        dest.writeString(String.valueOf(this.categoria));
         dest.writeString(this.estado);
         dest.writeString(this.tecnico);
         dest.writeString(this.descripcion);
@@ -125,7 +127,7 @@ public class Tarea implements Parcelable {
     public void readFromParcel(Parcel source) {
         this.id = source.readInt();
         this.prioridad = source.readString();
-        this.categoria = source.readString();
+        this.categoria = Categoria.valueOf(source.readString());
         this.estado = source.readString();
         this.tecnico = source.readString();
         this.descripcion = source.readString();
@@ -135,7 +137,7 @@ public class Tarea implements Parcelable {
     protected Tarea(Parcel in) {
         this.id = in.readInt();
         this.prioridad = in.readString();
-        this.categoria = in.readString();
+        this.categoria = Categoria.valueOf(in.readString());
         this.estado = in.readString();
         this.tecnico = in.readString();
         this.descripcion = in.readString();

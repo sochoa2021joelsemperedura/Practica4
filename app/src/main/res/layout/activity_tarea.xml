@@ -4,4 +4,102 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TareaActivity"/>
+    tools:context=".TareaActivity">
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabGuardar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_save" />
+
+    <Spinner
+        android:id="@+id/spnCategoria"
+        android:layout_width="0dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/spnPrioridad"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvCategoriaTarea"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/spnPrioridad"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/spnEstado"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvPrioridadTarea"
+        app:layout_constraintTop_toBottomOf="@+id/spnCategoria" />
+
+    <Spinner
+        android:id="@+id/spnEstado"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvEstadoTarea"
+        app:layout_constraintTop_toBottomOf="@+id/spnPrioridad" />
+
+    <ImageView
+        android:id="@+id/ivEstadoTarea"
+        android:layout_width="28dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/tvEstadoTarea"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spnPrioridad"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/tvCategoriaTarea"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Categoria"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/tvPrioridadTarea"
+        app:layout_constraintEnd_toStartOf="@+id/spnCategoria"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/spnCategoria" />
+
+    <TextView
+        android:id="@+id/tvEstadoTarea"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="Estado"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/spnEstado"
+        app:layout_constraintStart_toEndOf="@+id/ivEstadoTarea"
+        app:layout_constraintTop_toTopOf="@+id/ivEstadoTarea" />
+
+    <TextView
+        android:id="@+id/tvPrioridadTarea"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Prioridad"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/ivEstadoTarea"
+        app:layout_constraintEnd_toStartOf="@+id/spnPrioridad"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spnCategoria" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

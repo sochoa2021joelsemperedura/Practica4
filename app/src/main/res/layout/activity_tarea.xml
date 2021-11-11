@@ -70,7 +70,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginBottom="8dp"
-        android:text="Categoria"
+        android:text="@string/stCategoria"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/tvPrioridadTarea"
         app:layout_constraintEnd_toStartOf="@+id/spnCategoria"
@@ -82,7 +82,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:text="Estado"
+        android:text="@string/stEstado"
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/spnEstado"
         app:layout_constraintStart_toEndOf="@+id/ivEstadoTarea"
@@ -95,11 +95,79 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
-        android:text="Prioridad"
+        android:text="@string/stPrioridad"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/ivEstadoTarea"
         app:layout_constraintEnd_toStartOf="@+id/spnPrioridad"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spnCategoria" />
+
+    <TextView
+        android:id="@+id/tvTecnicoAsig"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/stTecnicoAsignado"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvEstadoTarea" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/tilTecnico"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTecnicoAsig" />
+
+    <TextView
+        android:id="@+id/tvBreveDescripcion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/stBreveDescripcion"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tilTecnico" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/tilDescripcion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvBreveDescripcion" />
+
+    <EditText
+        android:id="@+id/etDescripcionGrande"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDescripcionGorda" />
+
+    <TextView
+        android:id="@+id/tvDescripcionGorda"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/tvDescripcion"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tilDescripcion" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

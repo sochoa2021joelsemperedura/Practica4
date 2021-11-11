@@ -3,6 +3,12 @@
     <string name="stAcercaDe">Acerca De</string>
     <string name="stOrdenar">Ordenar</string>
     <string name="stDialogo"><![CDATA[ Práctica 4\nV 1.0\nJoel Sempere Durá\nLicencia cc\n(Creative Commons)]]></string>
+    <string name="stEstado">Estado</string>
+    <string name="stPrioridad">Prioridad</string>
+    <string name="stCategoria">Categoria</string>
+    <string name="stTecnicoAsignado">Tecnico Asignado</string>
+    <string name="stBreveDescripcion">Breve Descripcion</string>
+    <string name="tvDescripcion">Descripción</string>
     <string-array name="prioridad">
         <item>Baja</item>
         <item>Media</item>

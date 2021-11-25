@@ -20,6 +20,11 @@ import java.util.List;
 public class TareasAdapter extends RecyclerView.Adapter<TareasAdapter.TareaViewHolder> {
     //Lista con las tareas a mostrar
     private List<Tarea> listaTareas;
+    //Detectar cuando el usuario pulsa el icono borrar;
+    private OnItemClickBorrarListener listenerBorrar;
+    //Detectar el clic sobre el elemento
+    private OnItemClickElementoListener listenerClickElemento;
+
 
     @NonNull
     @Override
@@ -97,12 +102,32 @@ public class TareasAdapter extends RecyclerView.Adapter<TareasAdapter.TareaViewH
 
 
 
-
         public TareaViewHolder(@NonNull View itemView) {
             super(itemView);
             iniciaViews();
+            //todo
+            ivEditar.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View view) {
+                    if (listenerBorrar != null){
+                        //si se pulsa al icono borrar, le pasamos la nota. Podemos saber la posición del item en la lista
+                        listenerBorrar.onItemBorrarClick(listaTareas.get( TareaViewHolder.this.getAdapterPosition()));
+
+                    }
+                }
+            });
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (listenerClickElemento != null)
+                        listenerClickElemento.onItemClickElemento(listaTareas.get( TareaViewHolder.this.getAdapterPosition()));
+                }
+            });
+
 
         }
+
 
         private void iniciaViews() {
             tvResumen = itemView.findViewById(R.id.tvResumen);
@@ -113,4 +138,19 @@ public class TareasAdapter extends RecyclerView.Adapter<TareasAdapter.TareaViewH
             lyItemTarea = itemView.findViewById(R.id.lyItemTarea);
         }
     }
+    public interface OnItemClickBorrarListener{
+        void onItemBorrarClick(Tarea tarea);
+    }
+    public interface OnItemClickElementoListener{
+        void onItemClickElemento(Tarea tarea);
+
+    }
+    public void setOnClickBorrarListener(OnItemClickBorrarListener listener) {
+        this.listenerBorrar = listener;
+    }
+    public void setOnClickElementoListener(OnItemClickElementoListener listener) {
+        this.listenerClickElemento = listener;
+    }
+
+
 }

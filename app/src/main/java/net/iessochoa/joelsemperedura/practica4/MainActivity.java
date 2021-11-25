@@ -1,5 +1,6 @@
 package net.iessochoa.joelsemperedura.practica4;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Observer;
@@ -7,10 +8,12 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -22,6 +25,11 @@ import net.iessochoa.joelsemperedura.practica4.model.TareaViewModel;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+
+    //TODO - implementar en añadir nueva nota startforresult
+    //TODO - por el punto 17
+    public static final int OPTION_REQUEST_NUEVA = 0;
+    public static final int OPTION_REQUEST_MODIFICAR = 1;
     private RecyclerView rvLista;
     // nos permite mantener los datos cuando se reconstruye la actividad
     private TareaViewModel tareaViewModel;
@@ -50,6 +58,60 @@ public class MainActivity extends AppCompatActivity {
                 tareasAdapter.setTareas(tareas);
             }
         });
+
+        //Nueva Nota -
+        //Al añadirla activara el observer anterior
+        fabAnyadir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                // startActivityForResult();
+
+            }
+        });
+        //Borrar Nota -
+        //Creamos el listener que se activara cuando pulse el icono de borrar
+        tareasAdapter.setOnClickBorrarListener(new TareasAdapter.OnItemClickBorrarListener() {
+            @Override
+            public void onItemBorrarClick(Tarea tarea) {
+                borrarTarea(tarea);
+            }
+        });
+
+        tareasAdapter.setOnClickElementoListener(new TareasAdapter.OnItemClickElementoListener() {
+            @Override
+            public void onItemClickElemento(Tarea tarea) {
+
+            }
+        });
+
+    }
+
+    /**
+     * Permite borrar la tarea, previamente muestra un dialogo para asegurar al usuario
+     * que desea borrarla
+     * @param tarea
+     */
+    private void borrarTarea(Tarea tarea) {
+        AlertDialog.Builder dialogo = new AlertDialog.Builder(MainActivity.this);
+        dialogo.setTitle("Aviso"); //titulo
+        dialogo.setMessage("Esta seguro de que desea eliminar la tarea con id "+tarea.getId()); //mensaje
+
+        //boton ok y evento
+        dialogo.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                // en caso de ok
+                tareaViewModel.delTarea(tarea);
+            }
+        });
+        dialogo.setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+            //en caso de cancel nada
+            }
+        });
+        dialogo.show();
     }
 
     private void iniciaViews() {

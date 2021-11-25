@@ -50,22 +50,16 @@ public class TareasAdapter extends RecyclerView.Adapter<TareasAdapter.TareaViewH
                     holder.lyItemTarea.setBackgroundColor(Color.parseColor("#FC8181"));//ROJO
                     break;
             }
-            // Icono segun actividad
-            switch (tarea.getCategoria()){
-                case "Reparación" :
-                   holder.ivEstado.setImageResource(R.drawable.ic_repara);
+            // Icono segun Estado
+            switch (tarea.getEstado()){
+                case "Abierta" :
+                   holder.ivEstado.setImageResource(R.drawable.ic_open);
                     break;
-                case "Instalación" :
-                    holder.ivEstado.setImageResource(R.drawable.ic_instala);
+                case "En curso" :
+                    holder.ivEstado.setImageResource(R.drawable.ic_run);
                     break;
-                case "Mantenimiento" :
-                    holder.ivEstado.setImageResource(R.drawable.ic_mantiene);
-                    break;
-                case "Comercial" :
-                    holder.ivEstado.setImageResource(R.drawable.ic_comercia);
-                    break;
-                case "Otros" :
-                    holder.ivEstado.setImageResource(R.drawable.ic_otros);
+                case "Terminada" :
+                    holder.ivEstado.setImageResource(R.drawable.ic_close);
                     break;
 
             }

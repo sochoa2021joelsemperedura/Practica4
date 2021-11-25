@@ -1,5 +1,6 @@
 package net.iessochoa.joelsemperedura.practica4.adapters;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import net.iessochoa.joelsemperedura.practica4.R;
+import net.iessochoa.joelsemperedura.practica4.TareaActivity;
 import net.iessochoa.joelsemperedura.practica4.model.Tarea;
 import java.util.List;
 
@@ -92,6 +94,8 @@ public class TareasAdapter extends RecyclerView.Adapter<TareasAdapter.TareaViewH
         private ImageView ivBorrar;
         //Al contenedor se le cambiara el color
         private ConstraintLayout lyItemTarea;
+
+
 
 
         public TareaViewHolder(@NonNull View itemView) {

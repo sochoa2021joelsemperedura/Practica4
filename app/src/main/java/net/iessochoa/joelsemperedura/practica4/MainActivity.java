@@ -7,10 +7,13 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import net.iessochoa.joelsemperedura.practica4.adapters.TareasAdapter;
 import net.iessochoa.joelsemperedura.practica4.model.Tarea;
@@ -25,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
     //Adaptador del recyclerView
     private TareasAdapter tareasAdapter;
     private int cuentaTareas = 1;
+    //Boton Añadir
+    FloatingActionButton fabAnyadir;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +55,12 @@ public class MainActivity extends AppCompatActivity {
     private void iniciaViews() {
         rvLista = findViewById(R.id.rvTareas);
         tareasAdapter = new TareasAdapter();
+        //Todo borrar esto luego
+        fabAnyadir = findViewById(R.id.fabAnyadir);
+        fabAnyadir.setOnClickListener(view->{
+            Intent intent = new Intent(MainActivity.this,TareaActivity.class);
+            startActivity(intent);
+        });
     }
 
     //*************************MENU****************************//

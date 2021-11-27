@@ -1,25 +1,42 @@
 package net.iessochoa.joelsemperedura.practica4;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.textfield.TextInputEditText;
+
+import net.iessochoa.joelsemperedura.practica4.model.Tarea;
+
 import java.util.Arrays;
 import java.util.List;
 
 public class TareaActivity extends AppCompatActivity {
+
+    //Tarea usada para comparar si existe
+    public static Tarea EXTRA_TAREA;
+
     Spinner spnCategoria;
     Spinner spnPrioridad;
     Spinner spnEstado;
 
     ImageView ivEstadoTarea;
+    EditText etDescripcionGrande;
+    TextInputEditText tilDescripcion;
+    TextInputEditText tilTecnico;
+
+    FloatingActionButton fabGuardar;
 
 
 
@@ -30,6 +47,11 @@ public class TareaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_tarea);
 
         iniciaViews();
+        //verifica que es una nueva tarea
+        if (EXTRA_TAREA == null){
+            //titulo nuevo
+            this.setTitle("Nueva Tarea");
+        }
 
         //adaptador para cada spinner y Obtener los array String de xml
         ArrayAdapter<CharSequence>adaptadorCategoria = ArrayAdapter.createFromResource(this,
@@ -42,6 +64,17 @@ public class TareaActivity extends AppCompatActivity {
         spnCategoria.setAdapter(adaptadorCategoria);
         spnPrioridad.setAdapter(adaptadorPrioridad);
         spnEstado.setAdapter(adaptadorEstado);
+
+        //Si clicas el boton guardar
+        fabGuardar.setOnClickListener( e->{
+            if(tilTecnico.getText().toString().equals("") || tilDescripcion.getText().equals("") ||
+            etDescripcionGrande.getText().equals("")){
+                Toast.makeText(this,"Debes rellenar todos los campos",Toast.LENGTH_SHORT).show();
+            }else{
+                //todo guardar como nuevo
+            }
+
+        });
 
         //Evento seleccion de Spinner cargar icono
         spnEstado.setOnItemSelectedListener(
@@ -76,11 +109,26 @@ public class TareaActivity extends AppCompatActivity {
 
     }
 
+    /*
+    Que hacer segun el resultado devuelto
+     */
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        //TODO
+    }
+
     public void iniciaViews(){
         spnCategoria = findViewById(R.id.spnCategoria);
         spnPrioridad = findViewById(R.id.spnPrioridad);
         spnEstado = findViewById(R.id.spnEstado);
 
         ivEstadoTarea = findViewById(R.id.ivEstadoTarea);
+
+        tilDescripcion = findViewById(R.id.tilDescripcion);
+        tilTecnico = findViewById(R.id.tilTecnico);
+        etDescripcionGrande = findViewById(R.id.etDescripcionGrande);
+
+        fabGuardar = findViewById(R.id.fabGuardar);
     }
 }

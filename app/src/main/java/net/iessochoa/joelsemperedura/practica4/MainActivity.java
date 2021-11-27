@@ -1,5 +1,6 @@
 package net.iessochoa.joelsemperedura.practica4;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
@@ -25,9 +26,6 @@ import net.iessochoa.joelsemperedura.practica4.model.TareaViewModel;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-
-    //TODO - implementar en añadir nueva nota startforresult
-    //TODO - por el punto 17
     public static final int OPTION_REQUEST_NUEVA = 0;
     public static final int OPTION_REQUEST_MODIFICAR = 1;
     private RecyclerView rvLista;
@@ -82,7 +80,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClickElemento(Tarea tarea) {
                 //todo ver tarea
-                verTarea(tarea);
+                Intent intent = new Intent(MainActivity.this,TareaActivity.class);
+                intent.putExtra(TareaActivity.EXTRA_TAREA,tarea);
+                startActivityForResult(intent,OPTION_REQUEST_MODIFICAR);
             }
         });
 
@@ -114,29 +114,12 @@ public class MainActivity extends AppCompatActivity {
         });
         dialogo.show();
     }
-    /**
-     * Mostramos un dialogo con la tarea
-     * @param tarea
-     */
-    private void verTarea(Tarea tarea) {
-        /* ****** MOSTRAR LOS DATOS EN UN DIALOGO ******
-        AlertDialog.Builder dialogo = new AlertDialog.Builder(MainActivity.this);
-        dialogo.setTitle("Tarea "+tarea.getId());// titulo y mensaje
 
-        dialogo.setMessage(tarea.getDescripcion());
-// agregamos botón Ok y su evento
-        dialogo.setPositiveButton(android.R.string.ok
-                , new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        // Qué hacemos en caso ok
-                    }
-                });
-        dialogo.show();
-         */
-        //tareaViewModel.getTareaList()
+    //añadir tarea
+    private void anyadirTarea(Tarea tarea){
+        tareaViewModel.addTarea(tarea);
+
     }
-
 
     private void iniciaViews() {
         rvLista = findViewById(R.id.rvTareas);
@@ -179,4 +162,21 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode != RESULT_CANCELED){
+            Tarea tarea ;
+            tarea = (Tarea)data.getParcelableExtra(TareaActivity.EXTRA_TAREA);
+            switch (requestCode){
+                case OPTION_REQUEST_NUEVA:
+                    anyadirTarea(tarea);
+                    break;
+                case OPTION_REQUEST_MODIFICAR:
+                    //modificar tarea
+                    tareaViewModel.modificarTarea(tarea);
+                    break;
+            }
+        }
+    }
 }

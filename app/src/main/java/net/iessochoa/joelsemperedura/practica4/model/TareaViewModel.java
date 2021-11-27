@@ -67,6 +67,17 @@ public class TareaViewModel extends AndroidViewModel {
             avisarAlObserver();
         }
     }
+    //*******************MODIFICAR TAREA POR ID********************//
+    public void modificarTarea(Tarea tarea){
+        if (listaTareas.size()>0){
+           int posicionTarea = listaTareas.indexOf(tarea);
+            System.out.println(tarea.getId());
+           listaTareas.set(posicionTarea,tarea);
+
+            avisarAlObserver();
+        }
+    }
+
 
     //*****************DATOS DE PRUEBA************************//
     private void crearDatos(){

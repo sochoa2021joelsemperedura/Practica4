@@ -25,7 +25,9 @@ import java.util.List;
 public class TareaActivity extends AppCompatActivity {
 
     //Tarea usada para comparar si existe
-    public static Tarea EXTRA_TAREA;
+    public static String EXTRA_TAREA = "TareaActivity.tarea"; // el que llega
+    Tarea tarea;
+    Intent iBack;
 
     Spinner spnCategoria;
     Spinner spnPrioridad;
@@ -47,11 +49,6 @@ public class TareaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_tarea);
 
         iniciaViews();
-        //verifica que es una nueva tarea
-        if (EXTRA_TAREA == null){
-            //titulo nuevo
-            this.setTitle("Nueva Tarea");
-        }
 
         //adaptador para cada spinner y Obtener los array String de xml
         ArrayAdapter<CharSequence>adaptadorCategoria = ArrayAdapter.createFromResource(this,
@@ -65,13 +62,53 @@ public class TareaActivity extends AppCompatActivity {
         spnPrioridad.setAdapter(adaptadorPrioridad);
         spnEstado.setAdapter(adaptadorEstado);
 
+        //verifica que es una nueva tarea
+        iBack = getIntent();
+        if (iBack.getParcelableExtra(EXTRA_TAREA) == null){
+            //titulo nuevo
+            this.setTitle("Nueva Tarea");
+            this.tarea = null;
+        }
+        else {
+            //tarea es igual a la tarea del item
+            this.tarea = iBack.getParcelableExtra(EXTRA_TAREA);
+            this.setTitle("Tarea "+tarea.getId());
+
+            spnPrioridad.setSelection(adaptadorPrioridad.getPosition(tarea.getPrioridad()));
+            spnCategoria.setSelection(adaptadorCategoria.getPosition(tarea.getCategoria()));
+            spnEstado.setSelection(adaptadorEstado.getPosition(tarea.getEstado()));
+
+            tilTecnico.setText(tarea.getTecnico());
+            tilDescripcion.setText(tarea.getDescripcion());
+            etDescripcionGrande.setText(tarea.getResumen());
+
+        }
+
         //Si clicas el boton guardar
         fabGuardar.setOnClickListener( e->{
             if(tilTecnico.getText().toString().equals("") || tilDescripcion.getText().equals("") ||
             etDescripcionGrande.getText().equals("")){
                 Toast.makeText(this,"Debes rellenar todos los campos",Toast.LENGTH_SHORT).show();
             }else{
-                //todo guardar como nuevo
+
+                if (tarea == null){
+                    //guardar nueva
+                    iBack.putExtra(EXTRA_TAREA,new Tarea(spnPrioridad.getSelectedItem().toString(),
+                            spnCategoria.getSelectedItem().toString(),
+                            spnEstado.getSelectedItem().toString(),
+                            tilTecnico.getText().toString(),etDescripcionGrande.getText().toString(),tilDescripcion.getText().toString()));
+                } else {
+                    tarea.setCategoria(spnCategoria.getSelectedItem().toString());
+                    tarea.setPrioridad(spnPrioridad.getSelectedItem().toString());
+                    tarea.setEstado(spnEstado.getSelectedItem().toString());
+                    tarea.setTecnico(tilTecnico.getText().toString());
+                    tarea.setResumen(etDescripcionGrande.getText().toString());
+                    tarea.setDescripcion(tilDescripcion.getText().toString());
+                    iBack.putExtra(EXTRA_TAREA,tarea);
+                }
+                setResult(RESULT_OK,iBack);
+                finish();
+
             }
 
         });

@@ -102,7 +102,7 @@ public class Tarea implements Parcelable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Tarea tarea = (Tarea) o;
-        return id == tarea.id && Objects.equals(prioridad, tarea.prioridad) && Objects.equals(categoria, tarea.categoria) && Objects.equals(estado, tarea.estado) && Objects.equals(tecnico, tarea.tecnico) && Objects.equals(descripcion, tarea.descripcion) && Objects.equals(resumen, tarea.resumen);
+        return id == tarea.id;
     }
 
     //***********************PARCELABLE******************************//

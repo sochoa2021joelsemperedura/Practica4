@@ -44,6 +44,7 @@ public class TareasAdapter extends RecyclerView.Adapter<TareasAdapter.TareaViewH
             final Tarea tarea = listaTareas.get(position);
             //mostrar los datos
             holder.tvResumen.setText(tarea.getId()+"-"+tarea.getDescripcion());
+            holder.tvTecnico.setText(tarea.getTecnico());
 
             //Segun la nota,mostramos un color u otro
             switch (tarea.getPrioridad()){

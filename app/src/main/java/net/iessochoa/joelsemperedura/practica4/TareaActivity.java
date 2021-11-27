@@ -86,8 +86,8 @@ public class TareaActivity extends AppCompatActivity {
 
         //Si clicas el boton guardar
         fabGuardar.setOnClickListener( e->{
-            if(tilTecnico.getText().toString().equals("") || tilDescripcion.getText().equals("") ||
-            etDescripcionGrande.getText().equals("")){
+            if(tilTecnico.getText().toString().equals("") || tilDescripcion.getText().toString().equals("") ||
+                    etDescripcionGrande.getText().toString().equals("")){
                 Toast.makeText(this,getString(R.string.stAvisoGuardar),Toast.LENGTH_SHORT).show();
             }else{
 

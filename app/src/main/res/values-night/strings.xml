@@ -26,4 +26,10 @@
         <item>En curso</item>
         <item>Terminada</item>
     </string-array>
+    <string name="stAviso">Aviso</string>
+    <string name="stAvisoMensaje">Esta seguro de que desea eliminar la tarea con id</string>
+    <string name="stTagAcercaDe">TagAcercaDe</string>
+    <string name="stNuevaTarea">Nueva Tarea</string>
+    <string name="stTarea">Tarea</string>
+    <string name="stAvisoGuardar">Debes rellenar todos los campos</string>
 </resources>

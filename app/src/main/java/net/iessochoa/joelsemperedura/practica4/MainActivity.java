@@ -79,7 +79,6 @@ public class MainActivity extends AppCompatActivity {
         tareasAdapter.setOnClickElementoListener(new TareasAdapter.OnItemClickElementoListener() {
             @Override
             public void onItemClickElemento(Tarea tarea) {
-                //todo ver tarea
                 Intent intent = new Intent(MainActivity.this,TareaActivity.class);
                 intent.putExtra(TareaActivity.EXTRA_TAREA,tarea);
                 startActivityForResult(intent,OPTION_REQUEST_MODIFICAR);
@@ -95,8 +94,8 @@ public class MainActivity extends AppCompatActivity {
      */
     private void borrarTarea(Tarea tarea) {
         AlertDialog.Builder dialogo = new AlertDialog.Builder(MainActivity.this);
-        dialogo.setTitle("Aviso"); //titulo
-        dialogo.setMessage("Esta seguro de que desea eliminar la tarea con id "+tarea.getId()); //mensaje
+        dialogo.setTitle(getString(R.string.stAviso)); //titulo
+        dialogo.setMessage(getString(R.string.stAvisoMensaje)+tarea.getId()); //mensaje
 
         //boton ok y evento
         dialogo.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
@@ -126,13 +125,6 @@ public class MainActivity extends AppCompatActivity {
         tareasAdapter = new TareasAdapter();
         //probando
         fabAnyadir = findViewById(R.id.fabAnyadir);
-
-       /* fabAnyadir.setOnClickListener(view->{
-            Intent intent = new Intent(MainActivity.this,TareaActivity.class);
-            startActivity(intent);
-        });
-
-         */
     }
 
     //*************************MENU****************************//
@@ -154,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
                 //Inicializa el objeto que nos devuelve el dialogo
                 FragmentManager fg = getSupportFragmentManager();
                 DialogoAlerta dialogo = new DialogoAlerta();
-                dialogo.show(fg,"tagAcercaDe");
+                dialogo.show(fg,getString(R.string.stTagAcercaDe));
 
                 return true;
             default:
@@ -162,6 +154,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    //Hace una cosa u otra segun la circunstancia del lanzamiento de la TareaActivity
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -170,6 +163,7 @@ public class MainActivity extends AppCompatActivity {
             tarea = (Tarea)data.getParcelableExtra(TareaActivity.EXTRA_TAREA);
             switch (requestCode){
                 case OPTION_REQUEST_NUEVA:
+                    //Añadir Tarea Nueva
                     anyadirTarea(tarea);
                     break;
                 case OPTION_REQUEST_MODIFICAR:

@@ -66,13 +66,13 @@ public class TareaActivity extends AppCompatActivity {
         iBack = getIntent();
         if (iBack.getParcelableExtra(EXTRA_TAREA) == null){
             //titulo nuevo
-            this.setTitle("Nueva Tarea");
+            this.setTitle(getString(R.string.stNuevaTarea));
             this.tarea = null;
         }
         else {
             //tarea es igual a la tarea del item
             this.tarea = iBack.getParcelableExtra(EXTRA_TAREA);
-            this.setTitle("Tarea "+tarea.getId());
+            this.setTitle(getString(R.string.stTarea)+" "+tarea.getId());
 
             spnPrioridad.setSelection(adaptadorPrioridad.getPosition(tarea.getPrioridad()));
             spnCategoria.setSelection(adaptadorCategoria.getPosition(tarea.getCategoria()));
@@ -88,7 +88,7 @@ public class TareaActivity extends AppCompatActivity {
         fabGuardar.setOnClickListener( e->{
             if(tilTecnico.getText().toString().equals("") || tilDescripcion.getText().equals("") ||
             etDescripcionGrande.getText().equals("")){
-                Toast.makeText(this,"Debes rellenar todos los campos",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this,getString(R.string.stAvisoGuardar),Toast.LENGTH_SHORT).show();
             }else{
 
                 if (tarea == null){

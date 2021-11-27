@@ -37,7 +37,7 @@ public class TareaViewModel extends AndroidViewModel {
     /*
     Recuperar el LiveData para asignar el listener al Observador en la activity
      */
-    public LiveData<List<Tarea>> getNotaList(){
+    public LiveData<List<Tarea>> getTareaList(){
         return listaTareasLiveData;
     }
 

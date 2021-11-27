@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         //***Recuperacion o creacion del viewModel***//
         tareaViewModel = new ViewModelProvider(this).get(TareaViewModel.class);
         //Que se muestren automaticamente
-        tareaViewModel.getNotaList().observe(this, new Observer<List<Tarea>>() {
+        tareaViewModel.getTareaList().observe(this, new Observer<List<Tarea>>() {
             @Override
             public void onChanged(List<Tarea> tareas) {
                 //actualizamos el recyclerView si hay cambios en la lista de tareas
@@ -59,17 +59,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //Nueva Nota -
+        //Nueva Tarea -
         //Al añadirla activara el observer anterior
         fabAnyadir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                // startActivityForResult();
+                Intent intent = new Intent(MainActivity.this,TareaActivity.class);
+                startActivityForResult(intent,OPTION_REQUEST_NUEVA);
 
             }
         });
-        //Borrar Nota -
+        //Borrar Tarea -
         //Creamos el listener que se activara cuando pulse el icono de borrar
         tareasAdapter.setOnClickBorrarListener(new TareasAdapter.OnItemClickBorrarListener() {
             @Override
@@ -81,7 +81,8 @@ public class MainActivity extends AppCompatActivity {
         tareasAdapter.setOnClickElementoListener(new TareasAdapter.OnItemClickElementoListener() {
             @Override
             public void onItemClickElemento(Tarea tarea) {
-
+                //todo ver tarea
+                verTarea(tarea);
             }
         });
 
@@ -113,16 +114,42 @@ public class MainActivity extends AppCompatActivity {
         });
         dialogo.show();
     }
+    /**
+     * Mostramos un dialogo con la tarea
+     * @param tarea
+     */
+    private void verTarea(Tarea tarea) {
+        /* ****** MOSTRAR LOS DATOS EN UN DIALOGO ******
+        AlertDialog.Builder dialogo = new AlertDialog.Builder(MainActivity.this);
+        dialogo.setTitle("Tarea "+tarea.getId());// titulo y mensaje
+
+        dialogo.setMessage(tarea.getDescripcion());
+// agregamos botón Ok y su evento
+        dialogo.setPositiveButton(android.R.string.ok
+                , new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        // Qué hacemos en caso ok
+                    }
+                });
+        dialogo.show();
+         */
+        //tareaViewModel.getTareaList()
+    }
+
 
     private void iniciaViews() {
         rvLista = findViewById(R.id.rvTareas);
         tareasAdapter = new TareasAdapter();
-        //Todo borrar esto luego
+        //probando
         fabAnyadir = findViewById(R.id.fabAnyadir);
-        fabAnyadir.setOnClickListener(view->{
+
+       /* fabAnyadir.setOnClickListener(view->{
             Intent intent = new Intent(MainActivity.this,TareaActivity.class);
             startActivity(intent);
         });
+
+         */
     }
 
     //*************************MENU****************************//
@@ -137,7 +164,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_ordenar:
-                //El ejercicio pide un toast (TODO hacer la funcion más adelante)
+                //El ejercicio pide un toast (TODO hacer la funcion más adelante -OPTATIVA-)
                 Toast.makeText(this, R.string.stOrdenar,Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.action_acercade:

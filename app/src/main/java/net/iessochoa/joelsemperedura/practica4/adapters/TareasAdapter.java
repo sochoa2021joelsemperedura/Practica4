@@ -106,7 +106,7 @@ public class TareasAdapter extends RecyclerView.Adapter<TareasAdapter.TareaViewH
             super(itemView);
             iniciaViews();
             //todo
-            ivEditar.setOnClickListener(new View.OnClickListener(){
+            ivBorrar.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View view) {
                     if (listenerBorrar != null){
@@ -117,7 +117,7 @@ public class TareasAdapter extends RecyclerView.Adapter<TareasAdapter.TareaViewH
                 }
             });
 
-            itemView.setOnClickListener(new View.OnClickListener() {
+            ivEditar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     if (listenerClickElemento != null)
